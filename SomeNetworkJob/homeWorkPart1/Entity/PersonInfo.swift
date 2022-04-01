@@ -13,12 +13,27 @@
 
 import Foundation
 
-struct PersonInfo: Codable {
+struct PersonInfo: Codable, CustomStringConvertible, Hashable {
+    
+    
+    public var description: String {
+        "name = \(name)"
+    }
     let id: Int
     let name, username, email: String
     let address: Address
     let phone, website: String
     let company: Company
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: PersonInfo, rhs: PersonInfo) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    
 }
 
 // MARK: - Address
