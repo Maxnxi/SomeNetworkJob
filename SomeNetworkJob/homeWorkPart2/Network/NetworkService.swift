@@ -7,11 +7,12 @@
 
 import Foundation
 
+enum ServiceError: Error {
+    case badResponse
+    case badParameters
+}
+
 final class NetworkService<C: NetworkClient> {
-    
-    enum ServiceError: Error {
-        case badResponse
-    }
     
     typealias Completion = (Item?, Error?) -> ()
     typealias Parameters = [String: Int]
@@ -24,7 +25,10 @@ final class NetworkService<C: NetworkClient> {
     
     
     func fetchItem(at index: Int, completion: @escaping Completion) {
+        
+        
         let params = ItemRequestParams(index: index)
+        
         client.networkRequest(params: params) { (response, error) in
             if let error = error {
                 completion(nil, error)

@@ -125,10 +125,9 @@
 		0570052927F6D982006D3FF1 /* SomeNetworkJob */ = {
 			isa = PBXGroup;
 			children = (
+				0570055B27F6D9F7006D3FF1 /* ExampleFromLessonLongTimeAgo */,
 				05A4D26827F710C100E8874F /* homeWorkPart2 */,
 				0570056427F6E25C006D3FF1 /* homeWorkPart1 */,
-				0570055B27F6D9F7006D3FF1 /* Entity */,
-				0570055A27F6D9EE006D3FF1 /* Network */,
 				0570052A27F6D982006D3FF1 /* AppDelegate.swift */,
 				0570052C27F6D982006D3FF1 /* SceneDelegate.swift */,
 				0570053027F6D982006D3FF1 /* Main.storyboard */,
@@ -162,20 +161,19 @@
 			isa = PBXGroup;
 			children = (
 				0570055E27F6DA24006D3FF1 /* NetworkClient.swift */,
-				0570056027F6DA65006D3FF1 /* NetworkService.swift */,
 				0570056227F6DAF9006D3FF1 /* MockNetworkClient.swift */,
+				0570056027F6DA65006D3FF1 /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		0570055B27F6D9F7006D3FF1 /* Entity */ = {
+		0570055B27F6D9F7006D3FF1 /* ExampleFromLessonLongTimeAgo */ = {
 			isa = PBXGroup;
 			children = (
-				0570055C27F6DA07006D3FF1 /* Item.swift */,
 				0570056527F6E26B006D3FF1 /* Car.swift */,
 				0570056927F6E564006D3FF1 /* Engine_mock.swift */,
 			);
-			path = Entity;
+			path = ExampleFromLessonLongTimeAgo;
 			sourceTree = "<group>";
 		};
 		0570056427F6E25C006D3FF1 /* homeWorkPart1 */ = {
@@ -193,6 +191,8 @@
 		05A4D26827F710C100E8874F /* homeWorkPart2 */ = {
 			isa = PBXGroup;
 			children = (
+				0570055C27F6DA07006D3FF1 /* Item.swift */,
+				0570055A27F6D9EE006D3FF1 /* Network */,
 			);
 			path = homeWorkPart2;
 			sourceTree = "<group>";

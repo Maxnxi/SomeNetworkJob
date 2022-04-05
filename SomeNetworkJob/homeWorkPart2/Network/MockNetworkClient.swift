@@ -7,21 +7,27 @@
 
 import Foundation
 
-final class MockNetworkClient<R>: NetworkClient {
+enum MockNetworkClientError: Error {
+    case stubError
+}
 
-    enum MockNetworkClientError: Error {
-        case stubError
-    }
+
+final class MockNetworkClient<R>: NetworkClient {
 
     typealias Response = R
     typealias Completion = (Response?, Error?) -> ()
 
     var stubError: Bool = false
     var stubResponse: R?
+    var badResponse: Bool = false
+    
     func networkRequest<P: Codable>(params: P, completion: @escaping Completion) {
+        
         if stubError {
             completion(nil, MockNetworkClientError.stubError)
-        } else {
+        } else if badResponse {
+            completion(nil, ServiceError.badResponse)
+        }  else {
             completion(stubResponse, nil)
         }
     }

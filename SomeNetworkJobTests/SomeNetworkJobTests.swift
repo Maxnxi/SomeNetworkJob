@@ -15,26 +15,52 @@ class SomeNetworkJobTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
         client = MockNetworkClient<Item>()
         sut = NetworkService<MockNetworkClient<Item>>(client: client)
     }
+    
     override func tearDown() {
         client = nil
         sut = nil
-        
         super.tearDown()
     }
+    
     func testServiceCanReceiveResult() {
         let expectedItem = Item(name: "test")
         var resultItem: Item?
-        client.stubResponse = expectedItem
         
+        client.stubResponse = expectedItem
         sut.fetchItem(at: 0) { (item, _) in
             resultItem = item
         }
         XCTAssertEqual(expectedItem, resultItem)
     }
+    
+    func testServiceCanRecieveError() {
+        let expectedItem = MockNetworkClientError.stubError
+        var resultItem: MockNetworkClientError?
+        
+        client.stubError = true
+        sut.fetchItem(at: 0) { (_, err) in
+            resultItem = err as! MockNetworkClientError
+        }
+        XCTAssertEqual(expectedItem, resultItem)
+    }
+    
+    func testServiceBadResponse() {
+        let expectedItem = ServiceError.badResponse
+        var resultItem: ServiceError?
+        client.stubError = false
+        client.badResponse = true
+        sut.fetchItem(at: 0) { (_, err) in
+            resultItem = err as! ServiceError
+        }
+        XCTAssertEqual(expectedItem, resultItem)
+    }
+    
+
+    
+    
     
     
     override func setUpWithError() throws {
