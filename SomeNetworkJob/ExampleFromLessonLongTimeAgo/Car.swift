@@ -24,7 +24,7 @@ class Car {
     
     func ride(with speed: Int) {
         let engineSpeed = speed / 2
-        engine.setEnginSpeed(engineSpeed)
+        engine.setEngineSpeed(engineSpeed)
     }
     
 }
